@@ -29,7 +29,13 @@
                     }
                 }
 
-                let countryAbbObj = [country.name, country.alpha3Code]
+                let countryAbbObj = {
+                    [country.alpha3Code]:  {
+                        title: country.name,
+                    }
+                }
+                
+                //[country.name, country.alpha3Code]
                 
                 countryInfo.push(countryObj)
                 countryAbb.push(countryAbbObj)
@@ -56,7 +62,7 @@
 })();
 let countryInfo = []
 let countryAbb = []
-console.log(countryAbb, 'country abb')
+//console.log(countryAbb, 'country abb')
 //console.log(countryInfo, 'Country Info Array')
 
 function detailedView(country){
@@ -106,8 +112,8 @@ function detailedView(country){
     Object.values(countryAbb).forEach(value =>{
         //console.log(value, 'value')
         Object.entries(value).forEach(([fullName, value]) =>{
-            console.log(fullName, 'fullName')
-            console.log(value, 'value')
+            //console.log(fullName, 'fullName')
+            //console.log(value, 'value')
         })
     })
 }
