@@ -184,6 +184,7 @@ img{
     width: 320px;
     margin-top: 60px;
     border-radius: 5px;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
 }
 #country-NameLg{
     color: #111517;
