@@ -1,0 +1,32 @@
+@font-face {
+    font-family: ExtraBold;
+    src: url(font/NunitoSans-ExtraBold.ttf);
+}
+@font-face {
+    font-family: SemiBold;
+    src: url(font/NunitoSans-SemiBold.ttf);
+}
+body{
+    margin: 0;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 80px;
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443);
+}
+#title{
+    font-family: ExtraBold;
+    font-size: 14px;
+    justify-content: flex-start;
+    
+}
+#themeSwitch{
+    display: flex;
+    padding-left: 70px;
+    font-family: SemiBold;
+    font-size: 12px;
+}
