@@ -154,11 +154,11 @@ img{
     font-size: 14px
 }
 .cardInfo p{
-    margin: 6px 0px
+    margin: 6px 0px;
 }
 .infoTitle{
     font-family: SemiBold;
-    font-size: 14px
+    font-size: 14px;
 }
 #cards-Div{
     margin-bottom: 50px;

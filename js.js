@@ -9,6 +9,7 @@
         type: "GET",
         url: `${URL}`,
         success: (data) =>{
+            console.log(data)
             Object.values(data).forEach(country =>{
                 let population = formatNumber(country.population)
 
@@ -27,12 +28,9 @@
                         alpha3Code: country.alpha3Code
                     }
                 }
-                let countryAbbObj = {
-                    [country.name]: {
-                        alpha3Code: country.alpha3Code
-                    }
-                }
 
+                let countryAbbObj = [country.name, country.alpha3Code]
+                
                 countryInfo.push(countryObj)
                 countryAbb.push(countryAbbObj)
 
@@ -58,7 +56,7 @@
 })();
 let countryInfo = []
 let countryAbb = []
-
+console.log(countryAbb, 'country abb')
 //console.log(countryInfo, 'Country Info Array')
 
 function detailedView(country){
@@ -104,17 +102,26 @@ function detailedView(country){
             }
         })
     })
-
-    console.log(countryInfo)
-    console.log(countryAbb)
-
-    
+    //console.log(countryInfo, 'country Info')
+    Object.values(countryAbb).forEach(value =>{
+        //console.log(value, 'value')
+        Object.entries(value).forEach(([fullName, value]) =>{
+            console.log(fullName, 'fullName')
+            console.log(value, 'value')
+        })
+    })
 }
-
+//! Funciton to return from seeing a single card
 function goBack(){
     $('.totalView').removeClass('hide');
     $('.focusedView').addClass('hide');
     $('#target').remove();
     $(window).scrollTop(0);
+
+}
+//TODO: Need to finish region filter function
+function regionFilter(region){
+    region = region.innerHTML
+    console.log(region)
 
 }
