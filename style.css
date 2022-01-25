@@ -76,3 +76,47 @@ body{
     padding-top: 16px;
     padding-bottom: 16px;
 }
+
+.dropdown {
+    font-family: Regular;
+    font-size: 12px;
+    box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+    border-radius: 5px;
+    width: 200px;
+    height: 48px;
+    margin-left: 16px;
+    margin-top: 30px;
+}
+.dropBtn {
+    display: inline;
+    background-color: white;
+    color: #111517;
+    padding: 16px;
+    border: none;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdownContent a {
+    color: #111517;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdownContent a:hover {background-color: white;}
+  
+.dropdown:hover .dropdownContent {display: block;}
+
+
+.countryCard{
+    background-color: black;
+    height: 336px;
+    width: 264px;
+}
