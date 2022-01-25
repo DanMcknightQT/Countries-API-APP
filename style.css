@@ -6,6 +6,10 @@
     font-family: SemiBold;
     src: url(font/NunitoSans-SemiBold.ttf);
 }
+@font-face {
+    font-family: Regular;
+    src: url(font/NunitoSans-Regular.ttf);
+}
 body{
     margin: 0;
 }
@@ -24,9 +28,51 @@ body{
     justify-content: flex-start;
     
 }
-#themeSwitch{
+#theme-Switch{
     display: flex;
     padding-left: 70px;
     font-family: SemiBold;
     font-size: 12px;
+}
+
+#search-Form {
+    background-color: white;
+    width: 343px;
+    height: 48px;
+    border-radius: 5px;
+    display:flex;
+    margin-top: 20px;
+    margin-left: 16px;
+    justify-content: space-evenly;
+    box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+    border-radius: 5px;
+}
+#search-Input {
+    all: unset;
+    font: 12px Regular;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    margin-left: 30px;
+}
+::placeholder {
+    color: #C4C4C4;
+    font-family: Regular;
+    font-size: 12px;
+    opacity: 0.7; 
+}
+#search-Icon {
+    color: #C4C4C4;
+    fill: currentColor;
+    width: 16px;
+    height: 16px;
+}
+#search-Btn {
+    all: unset;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    padding-left: 30px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
