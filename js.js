@@ -11,7 +11,7 @@
         success: (data) =>{
             Object.values(data).forEach(country =>{
                 let population = formatNumber(country.population)
-                //console.log(country)
+
                 let countryObj = {
                     [country.name]: {
                         nativeName: country.nativeName,
@@ -23,11 +23,18 @@
                         currencies: country.currencies,
                         languages: country.languages,
                         borderCountries: country.borders,
-                        flag: country.flags.png
+                        flag: country.flags.png,
+                        alpha3Code: country.alpha3Code
+                    }
+                }
+                let countryAbbObj = {
+                    [country.name]: {
+                        alpha3Code: country.alpha3Code
                     }
                 }
 
                 countryInfo.push(countryObj)
+                countryAbb.push(countryAbbObj)
 
                 let contentBox =
                     `<section class="countryCard">
@@ -50,6 +57,7 @@
 
 })();
 let countryInfo = []
+let countryAbb = []
 
 //console.log(countryInfo, 'Country Info Array')
 
@@ -59,13 +67,10 @@ function detailedView(country){
     $('.totalView').addClass('hide');
     $('.focusedView').removeClass('hide');
     country = country.parentElement.childNodes[3].innerHTML
-    //console.log(country)
+
     Object.values(countryInfo).forEach(value =>{
-       //console.log(value)
         Object.entries(value).forEach(([key, value]) =>{
             if(country === key){
-                console.log(key, 'key')
-                console.log(value, 'value')
                 Object.values(value.currencies).forEach(currency =>{
                     currencyName = currency.name
                 })
@@ -73,7 +78,6 @@ function detailedView(country){
                     languages.push(language.name)
                 })
                 
-
                 let content =
                 `<div id="target">
                 <section class="largerImage" >
@@ -100,7 +104,11 @@ function detailedView(country){
             }
         })
     })
-    console.log(languages)
+
+    console.log(countryInfo)
+    console.log(countryAbb)
+
+    
 }
 
 function goBack(){
