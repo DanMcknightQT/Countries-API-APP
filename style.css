@@ -141,7 +141,7 @@ img{
     padding: 0;
 }
 #country-Name{
-    color: 111517;
+    color: #111517;
     margin-top: 25px;
     margin-left: 20px;
     font-family: ExtraBold;
@@ -162,4 +162,37 @@ img{
 }
 #cards-Div{
     margin-bottom: 50px;
+}
+
+.focusedView{
+    margin-left: 27.5px;
+}
+#back-Btn{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Light;
+    width: 104px;
+    height: 32px;
+    margin-top: 30px;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
+    border-radius: 2px;
+}
+.largerImage{
+    background-color: black;
+    height: 229px;
+    width: 320px;
+    margin-top: 60px;
+    border-radius: 5px;
+}
+#country-NameLg{
+    color: #111517;
+    margin-top: 25px;
+    font-family: ExtraBold;
+    font-size: 18px;
+}
+.cardInfoLg{
+    color: #111517;
+    font-family: Light;
+    font-size: 14px
 }
