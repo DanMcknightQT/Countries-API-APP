@@ -68,6 +68,7 @@ let languages = [];
 
 function detailedView(country){
     let currencyName = null;
+    let borderCountries = null;
     $('.totalView').addClass('hide');
     $('.filteredView').addClass('hide');
     $('.focusedView').removeClass('hide');
@@ -82,6 +83,8 @@ function detailedView(country){
                 Object.values(value.languages).forEach(language =>{
                     languages.push(language.name)
                 })
+                borderCountries = value.borderCountries
+                console.log(borderCountries, 'border countries for selected country')
                 
                 let content =
                 `<div id="target">
@@ -103,11 +106,31 @@ function detailedView(country){
                     <p><span class="infoTitle">Currencies:</span> ${currencyName}</p>
                     <p><span class="infoTitle">Languages:</span> ${languages.join(", ")}</p>
                 </article>
+                <br>
+                <p id="border-Title"> Border Countries: </p>
+                <div id="border-Countries"></div>
                 </div>`
 
                 $('#single-Card').append(content)
             }
         })
+    })
+
+    Object.values(borderCountries).forEach(value =>{
+        let codeName = value
+
+        Object.values(countryAbb).forEach(value =>{
+            Object.entries(value).forEach(([key, value]) =>{
+                if(codeName === key){
+                    codeName = value.title
+                }
+            })
+        })
+
+        let sample = 
+        `<div class="borderCountry"> ${codeName} </div>`
+
+        $('#border-Countries').append(sample)
     })
 }
 
@@ -165,6 +188,8 @@ function searchButton(){
                 Object.values(value.languages).forEach(language =>{
                     languages.push(language.name)
                 })
+                borderCountries = value.borderCountries
+                console.log(borderCountries, 'border countries for selected country')
                 
                 let content =
                 `<div id="target">
@@ -186,10 +211,29 @@ function searchButton(){
                     <p><span class="infoTitle">Currencies:</span> ${currencyName}</p>
                     <p><span class="infoTitle">Languages:</span> ${languages.join(", ")}</p>
                 </article>
+                <br>
+                <p id="border-Title"> Border Countries: </p>
+                <div id="border-Countries"></div>
                 </div>`
 
                 $('#single-Card').append(content)
             }
         })
+    })
+    Object.values(borderCountries).forEach(value =>{
+        let codeName = value
+
+        Object.values(countryAbb).forEach(value =>{
+            Object.entries(value).forEach(([key, value]) =>{
+                if(codeName === key){
+                    codeName = value.title
+                }
+            })
+        })
+
+        let sample = 
+        `<div class="borderCountry"> ${codeName} </div>`
+
+        $('#border-Countries').append(sample)
     })
 }

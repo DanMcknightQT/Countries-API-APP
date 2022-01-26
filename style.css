@@ -210,3 +210,24 @@ img{
     font-family: Light;
     font-size: 14px
 }
+#border-Title{
+    font-size: 16px;
+    font-family: SemiBold;
+}
+.borderCountry{
+    font-size: 12px;
+    font-family: Light;
+    height: 28px;
+    width: 96px;
+    margin-top: 15px;
+    padding-top: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
+}
+#border-Countries{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
