@@ -6,7 +6,6 @@
         url: `${URL}`,
         success: (data) =>{
             Object.values(data).forEach(country =>{
-                console.log(country)
                 let population = formatNumber(country.population)
 
                 let countryObj = {
@@ -52,20 +51,26 @@
             console.log(error)
         }
     })
-
 })();
+
+let countryInfo = [];
+let countryAbb = [];
+let languages = [];
 
 function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
-function capitalize(s){
-    let text = s.toLowerCase()
+function capitalize(input){
+    let text = input.toLowerCase()
     return text[0].toUpperCase() + text.slice(1);
 }
 
-let countryInfo = []
-let countryAbb = []
-let languages = [];
+
+
+function borderCountry(country){
+    country = country.innerHTML
+    console.log(country)
+}
 
 function detailedView(country){
     let currencyName = null;
@@ -86,6 +91,7 @@ function detailedView(country){
                 else{
                     currencyName = 'None'
                 }
+
                 Object.values(value.languages).forEach(language =>{
                     languages.push(language.name)
                 })
@@ -122,7 +128,6 @@ function detailedView(country){
         })
     })
     if(borderCountries === undefined || borderCountries === null){
-        console.log('whoa there')
 
         let part = 
             `<div class="borderCountry"> None </div>`
@@ -142,7 +147,7 @@ function detailedView(country){
             })
 
             let part = 
-            `<div class="borderCountry"> ${codeName} </div>`
+            `<div class="borderCountry" onclick="borderCountry(this)"> ${codeName} </div>`
 
             $('#border-Countries').append(part)
         })
@@ -154,7 +159,6 @@ function goBack(){
     $('.totalView').removeClass('hide');
     $('.focusedView').addClass('hide');
     $('#target').remove();
-    $(window).scrollTop(0);
     location.reload();
 }
 
@@ -190,6 +194,7 @@ function regionFilter(region){
 
 function searchButton(){
     let country = capitalize($('#search-Input').val())
+    let currencyName = null;
     $('.totalView').addClass('hide');
     $('.filteredView').addClass('hide');
     $('.focusedView').removeClass('hide');
@@ -209,7 +214,6 @@ function searchButton(){
                     languages.push(language.name)
                 })
                 borderCountries = value.borderCountries
-                console.log(borderCountries, 'border countries for selected country')
                 
                 let content =
                 `<div id="target">
@@ -261,7 +265,7 @@ function searchButton(){
             })
 
             let part = 
-            `<div class="borderCountry"> ${codeName} </div>`
+            `<div class="borderCountry" onclick="borderCountry(this)"> ${codeName} </div>`
 
             $('#border-Countries').append(part)
         })
