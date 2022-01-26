@@ -1,15 +1,10 @@
 (function(){
     const URL = 'https://restcountries.com/v2/all'
 
-    function formatNumber(num) {
-        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    }
-
     $.ajax({
         type: "GET",
         url: `${URL}`,
         success: (data) =>{
-            console.log(data)
             Object.values(data).forEach(country =>{
                 let population = formatNumber(country.population)
 
@@ -35,8 +30,6 @@
                     }
                 }
                 
-                //[country.name, country.alpha3Code]
-                
                 countryInfo.push(countryObj)
                 countryAbb.push(countryAbbObj)
 
@@ -60,15 +53,19 @@
     })
 
 })();
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+
 let countryInfo = []
 let countryAbb = []
-//console.log(countryAbb, 'country abb')
-//console.log(countryInfo, 'Country Info Array')
 
 function detailedView(country){
     let currencyName = null;
     let languages = [];
     $('.totalView').addClass('hide');
+    $('.filteredView').addClass('hide');
     $('.focusedView').removeClass('hide');
     country = country.parentElement.childNodes[3].innerHTML
 
@@ -109,25 +106,49 @@ function detailedView(country){
         })
     })
     //console.log(countryInfo, 'country Info')
-    Object.values(countryAbb).forEach(value =>{
-        //console.log(value, 'value')
-        Object.entries(value).forEach(([fullName, value]) =>{
-            //console.log(fullName, 'fullName')
-            //console.log(value, 'value')
-        })
-    })
 }
+
 //! Funciton to return from seeing a single card
 function goBack(){
     $('.totalView').removeClass('hide');
     $('.focusedView').addClass('hide');
     $('#target').remove();
     $(window).scrollTop(0);
-
+    location.reload();
 }
+
 //TODO: Need to finish region filter function
 function regionFilter(region){
+    $('.totalView').addClass('hide');
+    $('.filteredView').removeClass('hide');
     region = region.innerHTML
-    console.log(region)
+    console.log(region, 'selected region')
+
+    let dataClone = [...countryInfo]
+    //console.log(countryInfo, 'country info')
+    //console.log(dataClone, 'cloned data')
+    Object.values(dataClone).forEach(value =>{
+        //console.log(value)
+        Object.entries(value).forEach(([key, value]) =>{
+            if(value.region === region){
+                console.log(value.region)
+                console.log(value)
+                let population = formatNumber(value.population)
+
+                let contentBox =
+                    `<section class="countryCard">
+                    <img onclick="detailedView(this)" id="country-Flag" src="${value.flag}">
+                    <h1 id="country-Name">${key}</h1>
+                    <article class="cardInfo">
+                    <p><span class="infoTitle">Population:</span> ${population}</p>
+                    <p><span class="infoTitle">Region:</span> ${value.region}</p>
+                    <p><span class="infoTitle">Capital:</span> ${value.capital}</p>
+                    </article>
+                    </section>`
+
+                $('#filtered-Div').append(contentBox)
+            }
+        })
+    })
 
 }

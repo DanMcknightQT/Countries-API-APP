@@ -44,7 +44,7 @@
             </button>
             <div class="dropdownContent">
             <a onclick="regionFilter(this)" href="#">Africa</a>
-            <a onclick="regionFilter(this)" href="#">America</a>
+            <a onclick="regionFilter(this)" href="#">Americas</a>
             <a onclick="regionFilter(this)" href="#">Asia</a>
             <a onclick="regionFilter(this)" href="#">Europe</a>
             <a onclick="regionFilter(this)" href="#">Oceania</a>
@@ -65,10 +65,18 @@
         
         <div id="single-Card"></div>
     </div>
+
+    <div class="filteredView hide">
+        <div onclick="goBack()" id="back-Btn2">
+            <svg width="12" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.81802 0.696699L6.87868 1.75736L3.3785 5.25754H16.7428L16.7428 6.74246H3.3785L6.87868 10.2426L5.81802 11.3033L0.514719 6L5.81802 0.696699Z" fill="#111517"/>
+            </svg>
+            <p>Back</p>
+        </div>
+
+        <div id="filtered-Div"></div>
+    </div>
     
-
-
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js.js"></script>
 </body>

@@ -167,6 +167,7 @@ img{
 .focusedView{
     margin-left: 27.5px;
 }
+
 #back-Btn{
     display: flex;
     justify-content: space-evenly;
@@ -175,6 +176,18 @@ img{
     width: 104px;
     height: 32px;
     margin-top: 30px;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
+    border-radius: 2px;
+}
+#back-Btn2{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Light;
+    width: 104px;
+    height: 32px;
+    margin-top: 30px;
+    margin-left: 27.5px;
     box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
     border-radius: 2px;
 }
