@@ -6,6 +6,7 @@
         url: `${URL}`,
         success: (data) =>{
             Object.values(data).forEach(country =>{
+                console.log(country)
                 let population = formatNumber(country.population)
 
                 let countryObj = {
@@ -77,9 +78,14 @@ function detailedView(country){
     Object.values(countryInfo).forEach(value =>{
         Object.entries(value).forEach(([key, value]) =>{
             if(country === key){
-                Object.values(value.currencies).forEach(currency =>{
-                    currencyName = currency.name
-                })
+                if(!(value.currencies === undefined)){
+                    Object.values(value.currencies).forEach(currency =>{
+                        currencyName = currency.name
+                    })
+                }
+                else{
+                    currencyName = 'None'
+                }
                 Object.values(value.languages).forEach(language =>{
                     languages.push(language.name)
                 })
@@ -115,23 +121,32 @@ function detailedView(country){
             }
         })
     })
+    if(borderCountries === undefined || borderCountries === null){
+        console.log('whoa there')
 
-    Object.values(borderCountries).forEach(value =>{
-        let codeName = value
+        let part = 
+            `<div class="borderCountry"> None </div>`
 
-        Object.values(countryAbb).forEach(value =>{
-            Object.entries(value).forEach(([key, value]) =>{
-                if(codeName === key){
-                    codeName = value.title
-                }
+            $('#border-Countries').append(part)
+    }
+    else{
+        Object.values(borderCountries).forEach(value =>{
+            let codeName = value
+
+            Object.values(countryAbb).forEach(value =>{
+                Object.entries(value).forEach(([key, value]) =>{
+                    if(codeName === key){
+                        codeName = value.title
+                    }
+                })
             })
+
+            let part = 
+            `<div class="borderCountry"> ${codeName} </div>`
+
+            $('#border-Countries').append(part)
         })
-
-        let sample = 
-        `<div class="borderCountry"> ${codeName} </div>`
-
-        $('#border-Countries').append(sample)
-    })
+    }
 }
 
 //! Funciton to return from seeing a single card
@@ -182,9 +197,14 @@ function searchButton(){
     Object.values(countryInfo).forEach(value =>{
         Object.entries(value).forEach(([key, value]) =>{
             if(country === key){
-                Object.values(value.currencies).forEach(currency =>{
-                    currencyName = currency.name
-                })
+                if(!(value.currencies === undefined)){
+                    Object.values(value.currencies).forEach(currency =>{
+                        currencyName = currency.name
+                    })
+                }
+                else{
+                    currencyName = 'None'
+                }
                 Object.values(value.languages).forEach(language =>{
                     languages.push(language.name)
                 })
@@ -220,20 +240,30 @@ function searchButton(){
             }
         })
     })
-    Object.values(borderCountries).forEach(value =>{
-        let codeName = value
+    if(borderCountries === undefined || borderCountries === null){
+        console.log('whoa there')
 
-        Object.values(countryAbb).forEach(value =>{
-            Object.entries(value).forEach(([key, value]) =>{
-                if(codeName === key){
-                    codeName = value.title
-                }
+        let part = 
+            `<div class="borderCountry"> None </div>`
+
+            $('#border-Countries').append(part)
+    }
+    else{
+        Object.values(borderCountries).forEach(value =>{
+            let codeName = value
+
+            Object.values(countryAbb).forEach(value =>{
+                Object.entries(value).forEach(([key, value]) =>{
+                    if(codeName === key){
+                        codeName = value.title
+                    }
+                })
             })
+
+            let part = 
+            `<div class="borderCountry"> ${codeName} </div>`
+
+            $('#border-Countries').append(part)
         })
-
-        let sample = 
-        `<div class="borderCountry"> ${codeName} </div>`
-
-        $('#border-Countries').append(sample)
-    })
+    }
 }
