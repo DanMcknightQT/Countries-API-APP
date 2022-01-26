@@ -193,6 +193,10 @@ function searchButton(){
 
                 $('#single-Card').append(content)
             }
+            else{
+                alert('Not a valid country');
+                location.reload()
+            }
         })
     })
     console.log(country)
