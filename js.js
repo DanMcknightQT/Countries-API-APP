@@ -156,9 +156,6 @@ function searchButton(){
     $('.filteredView').addClass('hide');
     $('.focusedView').removeClass('hide');
 
-    
-    
-
     Object.values(countryInfo).forEach(value =>{
         Object.entries(value).forEach(([key, value]) =>{
             if(country === key){
@@ -193,11 +190,6 @@ function searchButton(){
 
                 $('#single-Card').append(content)
             }
-            else{
-                alert('Not a valid country');
-                location.reload()
-            }
         })
     })
-    console.log(country)
 }
