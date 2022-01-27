@@ -5,6 +5,7 @@
         type: "GET",
         url: `${URL}`,
         success: (data) =>{
+            console.log(data)
             Object.values(data).forEach(country =>{
                 let population = formatNumber(country.population)
 
