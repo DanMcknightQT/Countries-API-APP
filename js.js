@@ -65,8 +65,6 @@ function capitalize(input){
     return text[0].toUpperCase() + text.slice(1);
 }
 
-
-
 function borderCountry(country){
     country = country.innerHTML
     console.log(country)
@@ -76,6 +74,7 @@ function detailedView(country){
     let currencyName = null;
     let borderCountries = null;
     $('.totalView').addClass('hide');
+    $('.searchView').addClass('hide');
     $('.filteredView').addClass('hide');
     $('.focusedView').removeClass('hide');
     country = country.parentElement.childNodes[3].innerHTML
@@ -194,80 +193,35 @@ function regionFilter(region){
 
 function searchButton(){
     let country = capitalize($('#search-Input').val())
-    let currencyName = null;
     $('.totalView').addClass('hide');
     $('.filteredView').addClass('hide');
-    $('.focusedView').removeClass('hide');
+    $('.searchView').removeClass('hide');
 
-    Object.values(countryInfo).forEach(value =>{
-        Object.entries(value).forEach(([key, value]) =>{
-            if(country === key){
-                if(!(value.currencies === undefined)){
-                    Object.values(value.currencies).forEach(currency =>{
-                        currencyName = currency.name
-                    })
-                }
-                else{
-                    currencyName = 'None'
-                }
-                Object.values(value.languages).forEach(language =>{
-                    languages.push(language.name)
-                })
-                borderCountries = value.borderCountries
-                
-                let content =
-                `<div id="target">
-                <section class="largerImage" >
-                    <img src="${value.flag}">
-                </section>
+    const URL = 'https://restcountries.com/v2/name/'
 
-                <h1 id="country-NameLg">${key}</h1>
-                <article class="cardInfoLg">
-                    <p><span class="infoTitle">Native Name:</span> ${value.nativeName}</p>
-                    <p><span class="infoTitle">Population:</span> ${value.population}</p>
-                    <p><span class="infoTitle">Region:</span> ${value.region}</p>
-                    <p><span class="infoTitle">Sub Region:</span> ${value.subRegion}</p>
-                    <p><span class="infoTitle">Capital:</span> ${value.capital}</p>
-                </article>
-                <br>
-                <article class="cardInfoLg">
-                    <p><span class="infoTitle">Top Level Domain:</span> ${value.topLevelDomain}</p>
-                    <p><span class="infoTitle">Currencies:</span> ${currencyName}</p>
-                    <p><span class="infoTitle">Languages:</span> ${languages.join(", ")}</p>
-                </article>
-                <br>
-                <p id="border-Title"> Border Countries: </p>
-                <div id="border-Countries"></div>
-                </div>`
+    $.ajax({
+        type: "GET",
+        url: `${URL}${country}`,
+        success: (data) =>{
+            Object.values(data).forEach(country =>{
+                let population = formatNumber(country.population)
 
-                $('#single-Card').append(content)
-            }
-        })
-    })
-    if(borderCountries === undefined || borderCountries === null){
-        console.log('whoa there')
+                let contentBox =
+                    `<section class="countryCard">
+                    <img onclick="detailedView(this)" id="country-Flag" src="${country.flags.png}">
+                    <h1 id="country-Name">${country.name}</h1>
+                    <article class="cardInfo">
+                    <p><span class="infoTitle">Population:</span> ${population}</p>
+                    <p><span class="infoTitle">Region:</span> ${country.region}</p>
+                    <p><span class="infoTitle">Capital:</span> ${country.capital}</p>
+                    </article>
+                    </section>`
 
-        let part = 
-            `<div class="borderCountry"> None </div>`
-
-            $('#border-Countries').append(part)
-    }
-    else{
-        Object.values(borderCountries).forEach(value =>{
-            let codeName = value
-
-            Object.values(countryAbb).forEach(value =>{
-                Object.entries(value).forEach(([key, value]) =>{
-                    if(codeName === key){
-                        codeName = value.title
-                    }
-                })
+                $('#search-Div').append(contentBox)
             })
-
-            let part = 
-            `<div class="borderCountry" onclick="borderCountry(this)"> ${codeName} </div>`
-
-            $('#border-Countries').append(part)
-        })
-    }
+        },
+        error: (error) =>{
+            console.log(error)
+        }
+    })
 }
