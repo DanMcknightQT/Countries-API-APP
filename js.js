@@ -67,6 +67,7 @@ function borderCountry(country){
     country = country.innerHTML
     let currencyName = null;
     let borderCountries = null;
+    languages = []
 
     Object.values(countryInfo).forEach(value =>{
         Object.entries(value).forEach(([key, value]) =>{
@@ -94,6 +95,7 @@ function borderCountry(country){
                 </section>
 
                 <h1 id="country-NameLg">${key}</h1>
+                <section class="cardInfo">
                 <article class="cardInfoLg">
                     <p><span class="infoTitle">Native Name:</span> ${value.nativeName}</p>
                     <p><span class="infoTitle">Population:</span> ${value.population}</p>
@@ -102,14 +104,17 @@ function borderCountry(country){
                     <p><span class="infoTitle">Capital:</span> ${value.capital}</p>
                 </article>
                 <br>
-                <article class="cardInfoLg">
+                <article class="cardInfoLg extraInfo">
                     <p><span class="infoTitle">Top Level Domain:</span> ${value.topLevelDomain}</p>
                     <p><span class="infoTitle">Currencies:</span> ${currencyName}</p>
                     <p><span class="infoTitle">Languages:</span> ${languages.join(", ")}</p>
                 </article>
+                </section>
                 <br>
+                <section class="borderSection">
                 <p id="border-Title"> Border Countries: </p>
                 <div id="border-Countries"></div>
+                </section>
                 </div>`
 
                 $('#single-Card').append(newContent)
@@ -170,7 +175,6 @@ function detailedView(country){
                     languages.push(language.name)
                 })
                 borderCountries = value.borderCountries
-                console.log(borderCountries, 'border countries for selected country')
                 
                 let content =
                 `<div id="target">
@@ -179,6 +183,7 @@ function detailedView(country){
                 </section>
 
                 <h1 id="country-NameLg">${key}</h1>
+                <section class="cardInfo">
                 <article class="cardInfoLg">
                     <p><span class="infoTitle">Native Name:</span> ${value.nativeName}</p>
                     <p><span class="infoTitle">Population:</span> ${value.population}</p>
@@ -187,14 +192,17 @@ function detailedView(country){
                     <p><span class="infoTitle">Capital:</span> ${value.capital}</p>
                 </article>
                 <br>
-                <article class="cardInfoLg">
+                <article class="cardInfoLg extraInfo">
                     <p><span class="infoTitle">Top Level Domain:</span> ${value.topLevelDomain}</p>
                     <p><span class="infoTitle">Currencies:</span> ${currencyName}</p>
                     <p><span class="infoTitle">Languages:</span> ${languages.join(", ")}</p>
                 </article>
+                </section>
                 <br>
+                <section class="borderSection">
                 <p id="border-Title"> Border Countries: </p>
                 <div id="border-Countries"></div>
+                </section>
                 </div>`
 
                 $('#single-Card').append(content)
@@ -248,6 +256,7 @@ function regionFilter(region){
         Object.entries(value).forEach(([key, value]) =>{
             if(value.region === region){
                 let population = formatNumber(value.population)
+                console.log(value)
 
                 let contentBox =
                     `<section class="countryCard">
