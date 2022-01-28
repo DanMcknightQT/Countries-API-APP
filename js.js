@@ -240,8 +240,13 @@ function detailedView(country){
 function goBack(){
     $('.totalView').removeClass('hide');
     $('.focusedView').addClass('hide');
+    $('.filteredView').addClass('hide');
+    $('.searchView').addClass('hide');
     $('#target').remove();
-    location.reload();
+    $('#single-Card').empty()
+    $('#filtered-Div').empty()
+    $('#search-Div').empty()
+
 }
 
 //TODO: Need to finish region filter function
