@@ -313,8 +313,8 @@ function searchButton(){
     })
 }
 
-function switchTheme(e) {
-    if (e.target.checked) {
+function switchTheme(element) {
+    if (element.target.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
     else {
