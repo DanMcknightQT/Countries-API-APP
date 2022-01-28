@@ -14,15 +14,27 @@
     font-family: Light;
     src: url(font/NunitoSans-Light.ttf);
 }
+:root {
+    --elements-color: white;
+    --text-color: hsl(200, 15%, 8%);
+    --background-color: hsl(0, 0%, 98%);
+    --input-color: hsl(0, 0%, 52%);
+}
+[data-theme='dark']{
+    --elements-color: hsl(209, 23%, 22%);
+    --text-color: hsl(0, 0%, 100%);
+    --background-color: hsl(207, 26%, 17%);
+    --input-color: hsl(0, 0%, 52%);
+}
 body{
     margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 .hide{
     display: none;
 }
-
 @media (max-width: 375px) {
-    
     .header{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -44,7 +56,7 @@ body{
         font-size: 12px;
     }
     #search-Form {
-        background-color: white;
+        background-color: var(--elements-color);
         width: 343px;
         height: 48px;
         border-radius: 5px;
@@ -58,20 +70,17 @@ body{
     #search-Input {
         all: unset;
         font: 12px Regular;
-        color: black;
         height: 100%;
         width: 100%;
         margin-left: 30px;
     }
     ::placeholder {
-        color: #C4C4C4;
+        color: var(--input-color);
         font-family: Regular;
         font-size: 12px;
         opacity: 0.7; 
     }
     #search-Icon {
-        color: #C4C4C4;
-        fill: currentColor;
         width: 16px;
         height: 16px;
     }
@@ -96,29 +105,27 @@ body{
     }
     .dropBtn {
         display: inline;
-        background-color: white;
-        color: #111517;
+        background-color: var(--elements-color);
         padding: 16px;
         border: none;
     }
     .dropdownContent {
         display: none;
         position: absolute;
-        background-color: white;
+        background-color: var(--elements-color);
         min-width: 200px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
     }
     .dropdownContent a {
-        color: #111517;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
-    .dropdownContent a:hover {background-color: white;} 
+    .dropdownContent a:hover {background-color: var(--elements-color);} 
     .dropdown:hover .dropdownContent {display: block;}
     .countryCard{
-        background-color: white;
+        background-color: var(--elements-color);
         height: 336px;
         width: 264px;
         margin-left: 55.5px;
@@ -136,14 +143,12 @@ body{
         padding: 0;
     }
     #country-Name{
-        color: #111517;
         margin-top: 25px;
         margin-left: 20px;
         font-family: ExtraBold;
         font-size: 18px;
     }
     .cardInfo{
-        color: #111517;
         font-family: Light;
         padding-left: 20px;
         font-size: 14px
@@ -158,11 +163,11 @@ body{
     #cards-Div{
         margin-bottom: 50px;
     }
-    
     .focusedView{
         margin-left: 27.5px;
     }
     #back-Btn{
+        background-color: var(--elements-color);
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -174,6 +179,7 @@ body{
         border-radius: 2px;
     }
     #back-Btn2{
+        background-color: var(--elements-color);
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -186,7 +192,6 @@ body{
         border-radius: 2px;
     }
     .largerImage{
-        background-color: black;
         height: 229px;
         width: 320px;
         margin-top: 60px;
@@ -194,13 +199,11 @@ body{
         box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.293139);
     }
     #country-NameLg{
-        color: #111517;
         margin-top: 25px;
         font-family: ExtraBold;
         font-size: 18px;
     }
     .cardInfoLg{
-        color: #111517;
         font-family: Light;
         font-size: 14px
     }
@@ -209,6 +212,7 @@ body{
         font-family: SemiBold;
     }
     .borderCountry{
+        background-color: var(--elements-color);
         font-size: 12px;
         font-family: Light;
         height: 28px;
@@ -225,11 +229,8 @@ body{
         gap: 10px;
         margin-bottom: 30px;
     }
-    
 }
-
 @media (min-width: 376px) {
-        
     .header{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -266,19 +267,17 @@ body{
     #search-Input {
         all: unset;
         font: 12px Regular;
-        color: black;
         height: 100%;
         width: 100%;
         margin-left: 30px;
     }
     ::placeholder {
-        color: #C4C4C4;
+        color: var(--input-color);
         font-family: Regular;
         font-size: 14px;
         opacity: 0.8; 
     }
     #search-Icon {
-        color: #C4C4C4;
         fill: currentColor;
         width: 16px;
         height: 16px;
@@ -304,7 +303,7 @@ body{
     }
     .dropBtn {
         display: inline;
-        background-color: white;
+        background-color: var(--elements-color);
         color: #111517;
         padding: 16px;
         border: none;
@@ -312,21 +311,21 @@ body{
     .dropdownContent {
         display: none;
         position: absolute;
-        background-color: white;
+        background-color: var(--elements-color);
         min-width: 200px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
     }
     .dropdownContent a {
-        color: #111517;
+        color: var(--text-color);
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
-    .dropdownContent a:hover {background-color: white;} 
+    .dropdownContent a:hover {background-color: var(--elements-color);} 
     .dropdown:hover .dropdownContent {display: block;}
     .countryCard{
-        background-color: white;
+        background-color: var(--elements-color);
         height: 336px;
         width: 264px;
         margin-left: 45px;
@@ -344,14 +343,12 @@ body{
         padding: 0;
     }
     #country-Name{
-        color: #111517;
         margin-top: 25px;
         margin-left: 20px;
         font-family: ExtraBold;
         font-size: 18px;
     }
     .cardInfo{
-        color: #111517;
         font-family: Light;
         padding-left: 20px;
         font-size: 14px
@@ -372,6 +369,7 @@ body{
         margin-left: 27.5px;
     }
     #back-Btn{
+        background-color: var(--elements-color);
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -383,6 +381,7 @@ body{
         border-radius: 2px;
     }
     #back-Btn2{
+        background-color: var(--elements-color);
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -408,7 +407,6 @@ body{
         grid-column: 1; 
     }
     #country-NameLg{
-        color: #111517;
         margin-top: 50px;
         font-family: ExtraBold;
         font-size: 18px;
@@ -424,7 +422,6 @@ body{
         margin-top: -150px !important;
     }
     .cardInfoLg{
-        color: #111517;
         font-family: Light;
         font-size: 14px;
         grid-column: 2;
@@ -443,6 +440,7 @@ body{
         margin-top: 400px;
     }
     .borderCountry{
+        background-color: var(--elements-color);
         font-size: 12px;
         font-family: Light;
         height: 28px;
@@ -466,5 +464,9 @@ body{
         display: flex;
         flex-wrap: wrap;
     }
-
+    #search-Div{
+        margin-bottom: 50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
