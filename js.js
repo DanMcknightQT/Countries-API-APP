@@ -61,14 +61,88 @@ let languages = [];
 function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
-function capitalize(input){
-    let text = input.toLowerCase()
-    return text[0].toUpperCase() + text.slice(1);
-}
 
 function borderCountry(country){
+    $('#single-Card').empty()
     country = country.innerHTML
-    console.log(country)
+    let currencyName = null;
+    let borderCountries = null;
+
+    Object.values(countryInfo).forEach(value =>{
+        Object.entries(value).forEach(([key, value]) =>{
+            if(country === key){
+                console.log('inside the if statement')
+                if(!(value.currencies === undefined)){
+                    Object.values(value.currencies).forEach(currency =>{
+                        currencyName = currency.name
+                    })
+                }
+                else{
+                    currencyName = 'None'
+                }
+
+                Object.values(value.languages).forEach(language =>{
+                    languages.push(language.name)
+                })
+                borderCountries = value.borderCountries
+                console.log(borderCountries, 'border countries for selected country')
+                
+                let newContent =
+                `<div id="target">
+                <section class="largerImage" >
+                    <img src="${value.flag}">
+                </section>
+
+                <h1 id="country-NameLg">${key}</h1>
+                <article class="cardInfoLg">
+                    <p><span class="infoTitle">Native Name:</span> ${value.nativeName}</p>
+                    <p><span class="infoTitle">Population:</span> ${value.population}</p>
+                    <p><span class="infoTitle">Region:</span> ${value.region}</p>
+                    <p><span class="infoTitle">Sub Region:</span> ${value.subRegion}</p>
+                    <p><span class="infoTitle">Capital:</span> ${value.capital}</p>
+                </article>
+                <br>
+                <article class="cardInfoLg">
+                    <p><span class="infoTitle">Top Level Domain:</span> ${value.topLevelDomain}</p>
+                    <p><span class="infoTitle">Currencies:</span> ${currencyName}</p>
+                    <p><span class="infoTitle">Languages:</span> ${languages.join(", ")}</p>
+                </article>
+                <br>
+                <p id="border-Title"> Border Countries: </p>
+                <div id="border-Countries"></div>
+                </div>`
+
+                $('#single-Card').append(newContent)
+            }
+        })
+    })
+    if(borderCountries === undefined || borderCountries === null){
+
+        let part = 
+            `<div class="borderCountry"> None </div>`
+
+            $('#border-Countries').append(part)
+    }
+    else{
+        Object.values(borderCountries).forEach(value =>{
+            let codeName = value
+
+            Object.values(countryAbb).forEach(value =>{
+                Object.entries(value).forEach(([key, value]) =>{
+                    if(codeName === key){
+                        codeName = value.title
+                    }
+                })
+            })
+
+            let part = 
+            `<div class="borderCountry" onclick="borderCountry(this)">${codeName}</div>`
+
+            $('#border-Countries').append(part)
+        })
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function detailedView(country){
@@ -147,7 +221,7 @@ function detailedView(country){
             })
 
             let part = 
-            `<div class="borderCountry" onclick="borderCountry(this)"> ${codeName} </div>`
+            `<div class="borderCountry" onclick="borderCountry(this)">${codeName}</div>`
 
             $('#border-Countries').append(part)
         })
@@ -193,7 +267,7 @@ function regionFilter(region){
 }
 
 function searchButton(){
-    let country = capitalize($('#search-Input').val())
+    let country = $('#search-Input').val()
     $('.totalView').addClass('hide');
     $('.filteredView').addClass('hide');
     $('.searchView').removeClass('hide');
