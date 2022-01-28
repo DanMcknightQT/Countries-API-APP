@@ -279,12 +279,12 @@ function regionFilter(region){
 }
 
 function searchButton(){
-    let country = $('#search-Input').val();
+    let country = $('#search-Input').val()
     $('.totalView').addClass('hide');
     $('.filteredView').addClass('hide');
     $('.searchView').removeClass('hide');
 
-    const URL = 'https://restcountries.com/v2/name/'
+    let URL = 'https://restcountries.com/v2/name/'
 
     $.ajax({
         type: "GET",
@@ -295,13 +295,13 @@ function searchButton(){
 
                 let contentBox =
                     `<section class="countryCard">
-                        <img onclick="detailedView(this)" id="country-Flag" src="${country.flags.png}">
-                        <h1 id="country-Name">${country.name}</h1>
-                        <article class="cardInfo">
-                            <p><span class="infoTitle">Population:</span> ${population}</p>
-                            <p><span class="infoTitle">Region:</span> ${country.region}</p>
-                            <p><span class="infoTitle">Capital:</span> ${country.capital}</p>
-                        </article>
+                    <img onclick="detailedView(this)" id="country-Flag" src="${country.flags.png}">
+                    <h1 id="country-Name">${country.name}</h1>
+                    <article class="cardInfo">
+                    <p><span class="infoTitle">Population:</span> ${population}</p>
+                    <p><span class="infoTitle">Region:</span> ${country.region}</p>
+                    <p><span class="infoTitle">Capital:</span> ${country.capital}</p>
+                    </article>
                     </section>`
 
                 $('#search-Div').append(contentBox)
