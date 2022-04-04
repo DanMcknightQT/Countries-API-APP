@@ -29,7 +29,7 @@ function Countries() {
     },[])
 
     const region = async region => {
-        if(region === '') return
+        if(region === 'All') return
         const res = await fetch(`https://restcountries.com/v3.1/region/${region}`)
         const data = await res.json()
         console.log(region,'region')
@@ -37,7 +37,7 @@ function Countries() {
     }
 
     const search = async search => {
-        if( search === 'All') return
+        if( search === '') return
         const res = await fetch(`https://restcountries.com/v3.1/name/${search}`)
         const data = await res.json()
         console.log(data)
