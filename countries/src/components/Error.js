@@ -2,7 +2,10 @@ import React from 'react'
 
 function Error() {
   return (
-    <div>Error</div>
+    <div>
+      <br></br>
+      <h2>Your search does not exist.</h2>
+    </div>
   )
 }
 

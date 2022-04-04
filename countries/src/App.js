@@ -8,6 +8,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
 
+
   return (
     <div className="App">
 
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route path ='/' element={<Countries/>} />
           <Route path ='/Countries' element={<Countries/>} />
-          <Route path ='/Details' element={<CountryDetail/>} />
+          <Route path ='/Details/:cioc' element={<CountryDetail />} />
           <Route path ='*' element={<Error/>} />
         </Routes>
       </BrowserRouter>
